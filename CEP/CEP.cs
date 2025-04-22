@@ -2,16 +2,16 @@
 
 namespace MyClasses;
 
-public record struct CEP
+public readonly record struct CEP
 {
     public required uint Codigo { get; init; }
 
-    public string ToStrinFormated()
+    public readonly string ToStrinFormated()
     {
         return Codigo.ToString("00000-000");
     }
 
-    public override string ToString()
+    public override readonly string ToString()
     {
         return Codigo.ToString("00000000");
     }
@@ -36,7 +36,7 @@ public record struct CEP
 
     public static implicit operator CEP(string cep)
     {
-        ArgumentException.ThrowIfNullOrEmpty(cep, "CEP cannot be null or empty.");
+        ArgumentException.ThrowIfNullOrEmpty(nameof(cep), "CEP cannot be null or empty.");
 
         var _cep = cep.GetOnlyDigits();
 
