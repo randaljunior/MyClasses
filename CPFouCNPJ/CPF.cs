@@ -2,11 +2,11 @@
 
 namespace MyClasses;
 
-public record struct CPF : IDocumento
+public readonly record struct CPF : IDocumento
 {
     private const uint _size = 11;
 
-    private ulong _numero;
+    private readonly ulong _numero;
 
     /// <summary>
     /// Número do CPF.

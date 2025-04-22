@@ -2,11 +2,11 @@
 
 namespace MyClasses;
 
-public record struct CNPJ : IDocumento
+public readonly record struct CNPJ : IDocumento
 {
     private const uint _size = 14;
 
-    private ulong _numero;
+    private readonly ulong _numero;
 
     /// <summary>
     /// Número do CNPJ.

@@ -2,11 +2,9 @@
 
 namespace MyClasses;
 
-public class CPFouCNPJ
+public readonly struct CPFouCNPJ
 {
-    private IDocumento? _valor;
-
-    private CPFouCNPJ() { }
+    private readonly IDocumento? _valor;
 
     /// <summary>
     /// Construtor que recebe um CPF.
@@ -56,11 +54,11 @@ public class CPFouCNPJ
     {
         if (ValidacaoDocumentos.IsCPF(numero))
         {
-            return new CPFouCNPJ { _valor = new CPF(numero) };
+            return new CPFouCNPJ (new CPF(numero));
         }
         else if (ValidacaoDocumentos.IsCNPJ(numero))
         {
-            return new CPFouCNPJ { _valor = new CNPJ(numero) };
+            return new CPFouCNPJ (new CNPJ(numero));
         }
         else
         {
@@ -78,11 +76,11 @@ public class CPFouCNPJ
     {
         if (ValidacaoDocumentos.IsCPF(numero.AsSpan().GetDigits()))
         {
-            return new CPFouCNPJ { _valor = new CPF(numero) };
+            return new CPFouCNPJ (new CPF(numero));
         }
         else if (ValidacaoDocumentos.IsCNPJ(numero.AsSpan().GetDigits()))
         {
-            return new CPFouCNPJ { _valor = new CNPJ(numero) };
+            return new CPFouCNPJ (new CNPJ(numero));
         }
         else
         {
@@ -132,8 +130,6 @@ public class CPFouCNPJ
 
     public static bool operator ==(CPFouCNPJ a, CPFouCNPJ b)
     {
-        if (ReferenceEquals(a, b)) return true;
-        if (a is null || b is null) return false;
         return a.Equals(b);
     }
 
