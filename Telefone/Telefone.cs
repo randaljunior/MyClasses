@@ -2,7 +2,7 @@
 
 namespace MyClasses;
 
-internal class Telefone
+public class Telefone
 {
     public required uint DDD
     {
@@ -54,6 +54,11 @@ internal class Telefone
     public string ToString(string? format, IFormatProvider? formatProvider)
     {
         return NumeroCompleto.ToString(format, formatProvider);
+    }
+
+    public string? ToString(string v)
+    {
+        throw new NotImplementedException();
     }
 
     public static implicit operator uint(Telefone telefone)
