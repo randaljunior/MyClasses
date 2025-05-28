@@ -2,7 +2,7 @@
 
 namespace MyClasses;
 
-public class Telefone
+public readonly record struct Telefone
 {
     public required uint DDD
     {
@@ -56,11 +56,6 @@ public class Telefone
         return NumeroCompleto.ToString(format, formatProvider);
     }
 
-    public string? ToString(string v)
-    {
-        throw new NotImplementedException();
-    }
-
     public static implicit operator uint(Telefone telefone)
     {
         return telefone.NumeroCompleto;
@@ -69,6 +64,11 @@ public class Telefone
     public static implicit operator int(Telefone telefone)
     {
         return (int)(telefone.NumeroCompleto);
+    }
+
+    public static implicit operator string(Telefone telefone)
+    {
+        return telefone.ToString();
     }
 
     public static implicit operator Telefone(uint telefone)
