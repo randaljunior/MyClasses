@@ -2,6 +2,9 @@
 
 namespace MyClasses;
 
+/// <summary>
+/// Estrutura de CEP - Deve ser criado com conversores implicitos
+/// </summary>
 public readonly record struct CEP
 {
     public required uint Codigo { get; init; }
