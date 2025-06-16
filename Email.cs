@@ -6,6 +6,9 @@ namespace MyClasses;
 
 public partial record Email
 {
+    /// <summary>
+    /// Key = email, Value = displayName
+    /// </summary>
     private Dictionary<string, string> _addresses = new();
     private List<string> _errors = new();
 
@@ -105,6 +108,8 @@ public partial record Email
 
         return sb.ToString();
     }
+
+    public string GetFirst() => (IsEmpty()) ? String.Empty : _addresses.First().Key;
 
     public static implicit operator string(Email email) => email.ToString();
 
